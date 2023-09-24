@@ -63,10 +63,10 @@ INSERT INTO Title
  select * from bonus
  select * from title
 
--- Q-1. Write an SQL query to fetch ìFIRST_NAMEî from the Worker table using the alias name <WORKER_NAME>.
+-- Q-1. Write an SQL query to fetch ‚ÄúFIRST_NAME‚Äù from the Worker table using the alias name <WORKER_NAME>.
 select First_name  as 'worker_name' from worker
 
---Q-2. Write an SQL query to fetch ìFIRST_NAMEî from the Worker table in upper case.
+--Q-2. Write an SQL query to fetch ‚ÄúFIRST_NAME‚Äù from the Worker table in upper case.
 select upper(first_name) from worker
 
 --Q-3. Write an SQL query to fetch unique values of DEPARTMENT from the Worker table.
@@ -75,7 +75,7 @@ select distinct(department) from worker
 --Q-4. Write an SQL query to print the first three characters of  FIRST_NAME from the Worker table.
 select substring(first_name,1,3) from worker
 
---Q-5. Write an SQL query to find the position of the alphabet (ëaí) in the first name column ëAmitabhí from the Worker table.
+--Q-5. Write an SQL query to find the position of the alphabet (‚Äòa‚Äô) in the first name column ‚ÄòAmitabh‚Äô from the Worker table.
 --**select instr(first_name,binary'a') from worker where first_name='amitabh'
 
 --Q-6. Write an SQL query to print the FIRST_NAME from the Worker table after removing white spaces from the right side.
@@ -87,7 +87,7 @@ select LTrim(department) from worker
 --Q-8. Write an SQL query that fetches the unique values of DEPARTMENT from the Worker table and prints its length.
 select distinct(department)  as 'unique department', len(department) as 'length' from worker 
 
---Q-9. Write an SQL query to print the FIRST_NAME from the Worker table after replacing ëaí with ëAí.
+--Q-9. Write an SQL query to print the FIRST_NAME from the Worker table after replacing ‚Äòa‚Äô with ‚ÄòA‚Äô.
 select replace(first_name,'a','A') from worker
 
 --Q-10. Write an SQL query to print the FIRST_NAME and LAST_NAME from the Worker table into a single column COMPLETE_NAME.
@@ -100,33 +100,33 @@ select concat(first_name,'',last_name) as 'complete name' from worker
 select * from worker order by first_name
 
 --Q-12. Write an SQL query to print all Worker details from the Worker table order by FIRST_NAME Ascending and DEPARTMENT Descending.
+select  * from worker order by first_name , department desc
 
-
---Q-13. Write an SQL query to print details for Workers with the first names ìVipulî and ìSatishî from the Worker table.
+--Q-13. Write an SQL query to print details for Workers with the first names ‚ÄúVipul‚Äù and ‚ÄúSatish‚Äù from the Worker table.
 select * from worker where first_name in('vipul','satish')
 
---Q-14. Write an SQL query to print details of workers excluding first names, ìVipulî and ìSatishî from the Worker table.
+--Q-14. Write an SQL query to print details of workers excluding first names, ‚ÄúVipul‚Äù and ‚ÄúSatish‚Äù from the Worker table.
 select *  from worker where first_name not in('vipul','satish')
 
---Q-15. Write an SQL query to print details of Workers with DEPARTMENT name as ìAdminî.
+--Q-15. Write an SQL query to print details of Workers with DEPARTMENT name as ‚ÄúAdmin‚Äù.
 select * from worker where department='admin'
 
---Q-16. Write an SQL query to print details of the Workers whose FIRST_NAME contains ëaí.
+--Q-16. Write an SQL query to print details of the Workers whose FIRST_NAME contains ‚Äòa‚Äô.
 select * from worker where first_name like '%a%'
 
---Q-17. Write an SQL query to print details of the Workers whose FIRST_NAME ends with ëaí.
+--Q-17. Write an SQL query to print details of the Workers whose FIRST_NAME ends with ‚Äòa‚Äô.
 select * from worker where first_name like '%a'
 
---Q-18. Write an SQL query to print details of the Workers whose FIRST_NAME ends with ëhí and contains six alphabets.
+--Q-18. Write an SQL query to print details of the Workers whose FIRST_NAME ends with ‚Äòh‚Äô and contains six alphabets.
 select * from worker where first_name like '_____h'
 
 --Q-19. Write an SQL query to print details of the Workers whose SALARY lies between 100000 and 500000.
 select * from worker where salary between 100000 and 500000
 
---Q-20. Write an SQL query to print details of the Workers who joined in Febí2014.
+--Q-20. Write an SQL query to print details of the Workers who joined in Feb‚Äô2014.
 select * from worker where year(joining_date) = 2014 and month(joining_date)=2
 
---Q-21. Write an SQL query to fetch the count of employees working in the department ëAdminí.
+--Q-21. Write an SQL query to fetch the count of employees working in the department ‚ÄòAdmin‚Äô.
 select count(worker_id) as 'count' from worker where department='admin'
 
 --Q-22. Write an SQL query to fetch worker names with salaries >= 50000 and <= 100000.
@@ -237,7 +237,8 @@ select * from worker where worker_id = (select min(worker_id) from worker)
 select top 5 *  from worker order by worker_id desc 
 
 --Q-45. Write an SQL query to print the name of employees having the highest salary in each department.
-
+ select department , max(salary) as 'highest salary' from worker 
+group by DEPARTMENT 
 
 
 --Q-46. Write an SQL query to fetch three max salaries from a table.
@@ -252,7 +253,7 @@ select top 3 * from worker order by salary
 
 
 --Q-49. Write an SQL query to fetch departments along with the total salaries paid for each of them.
-†SELECT DEPARTMENT, sum(Salary) from worker group by DEPARTMENT
+¬†SELECT DEPARTMENT, sum(Salary) from worker group by DEPARTMENT
 
 --Q-50. Write an SQL query to fetch the names of workers who earn the highest salary.
 SELECT FIRST_NAME, SALARY from Worker
