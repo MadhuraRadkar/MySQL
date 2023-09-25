@@ -76,7 +76,7 @@ select distinct(department) from worker
 select substring(first_name,1,3) from worker
 
 --Q-5. Write an SQL query to find the position of the alphabet (‘a’) in the first name column ‘Amitabh’ from the Worker table.
---**select instr(first_name,binary'a') from worker where first_name='amitabh'
+select charindex ('a',first_name) as position from worker where first_name = 'amitabh'
 
 --Q-6. Write an SQL query to print the FIRST_NAME from the Worker table after removing white spaces from the right side.
 select RTrim(first_name) from worker
